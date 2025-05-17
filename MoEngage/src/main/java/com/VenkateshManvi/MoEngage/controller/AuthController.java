@@ -42,7 +42,7 @@ public class AuthController {
 
         return  "redirect:/dogs/home";
     }
-    @GetMapping("/index")
+    @GetMapping("/")
     public String getIndex(){
         return "index";
     }
