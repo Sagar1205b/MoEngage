@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>DigitalIdentification</title>
+    <title>List</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -51,31 +51,28 @@
         <a th:href="@{/dogs/search}"
            class="btn btn-primary btn-sm mb-3">Add List</a>
         <table class="table table-bordered table-striped">
-
             <thead class="table-dark">
             <tr>
-                <th>ListName</th>
-
+                <th>List Name</th>
+                <th>Created Date</th>
                 <th>Action</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="list: ${ListSaves}">
-
-                <td><a th:href="@{'/dogs/listView/' + ${list.id}}" th:text="${list.name}"></a>
-                </td>
-
                 <td>
-                    <!--                add a delete button-->
-                    <a th:href="@{/dogs/delete(ListId=${list.id})}"
-                       onclick="if(!(confirm('Are you sure you want to delete this employee?'))) return false"
-                       class="btn btn-danger btn-sm ">Delete</a>
+                    <a th:href="@{'/dogs/listView/' + ${list.id}}" th:text="${list.name}"></a>
                 </td>
-
-
+                <td th:text="${#temporals.format(list.createdAt, 'yyyy-MM-dd HH:mm')}" style="color:white"></td>
+                <td>
+                    <a th:href="@{/dogs/delete(ListId=${list.id})}"
+                       onclick="if(!(confirm('Are you sure you want to delete this list?'))) return false"
+                       class="btn btn-danger btn-sm">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>
+
     </div>
 </header>
 </div>
